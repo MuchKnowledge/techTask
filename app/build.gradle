@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -51,8 +53,20 @@ dependencies {
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
-    // MediaApi
-    implementation "androidx.media:media:1.6.0"
+    // Exoplayer
+    def exoplayerVersion = "1.0.0-beta01"
+    implementation "androidx.media3:media3-ui:$exoplayerVersion"
+    implementation "androidx.media3:media3-exoplayer:$exoplayerVersion"
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:31.0.3')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+
+    // Glide
+    def glideVersion = "4.14.2"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
     // Retrofit
     def retrofitVersion = "2.9.0"
